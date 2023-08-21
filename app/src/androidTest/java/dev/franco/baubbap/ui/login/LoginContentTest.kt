@@ -9,9 +9,11 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
-import dev.franco.baubbap.validator.InputType
-import dev.franco.baubbap.validator.Result
 import dev.franco.baubbap.ui.login.LoginContent
+import dev.franco.baubbap.validator.Curp
+import dev.franco.baubbap.validator.InputType
+import dev.franco.baubbap.validator.Nip
+import dev.franco.baubbap.validator.Result
 import org.junit.Rule
 import org.junit.Test
 
@@ -120,5 +122,59 @@ class LoginContentTest {
             .performClick()
 
         assert(isLoginPressed)
+    }
+
+    @Test
+    fun whenLoadingLoginButtonIsDisabled() {
+        var isLoginPressed by mutableStateOf(false)
+
+        val onLogin: () -> Unit = {
+            isLoginPressed = true
+        }
+
+        composeTestRule.setContent {
+            LoginContent(
+                onShowPassword = {},
+                user = "",
+                onUserChange = { value, inputType -> },
+                password = "",
+                onPasswordChange = {},
+                onLogin = onLogin,
+                curpPhoneResult = Curp.OnInvalid,
+                nipResult = Nip.OnInvalid,
+                loading = true,
+            )
+        }
+
+        composeTestRule
+            .onNodeWithTag("login_button")
+            .performClick()
+
+        assert(!isLoginPressed)
+    }
+
+    @Test
+    fun whenCurpOrNipIsInvalidLabelErrorAreShown() {
+        composeTestRule.setContent {
+            LoginContent(
+                onShowPassword = {},
+                user = "",
+                onUserChange = { value, inputType -> },
+                password = "",
+                onPasswordChange = {},
+                onLogin = {},
+                curpPhoneResult = Curp.OnInvalid,
+                nipResult = Nip.OnInvalid,
+                loading = false,
+            )
+        }
+
+        with(composeTestRule) {
+            onNodeWithTag("nip_login_error")
+                .assertIsDisplayed()
+
+            onNodeWithTag("curp_phone_login_error")
+                .assertIsDisplayed()
+        }
     }
 }

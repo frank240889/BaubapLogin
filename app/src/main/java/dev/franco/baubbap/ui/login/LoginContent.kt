@@ -322,7 +322,9 @@ internal fun LoginContent(
                         .padding(
                             horizontal = BaubapComposeTheme.orientation.smallSpacing,
                         )
-                        .align(Alignment.CenterHorizontally),
+                        .align(Alignment.CenterHorizontally)
+                        .testTag("curp_phone_login_error")
+                        .layoutId("curp_phone_login_error"),
                 ) {
                     Text(
                         text = when (curpPhoneResult) {
@@ -440,7 +442,9 @@ internal fun LoginContent(
                         .padding(
                             horizontal = BaubapComposeTheme.orientation.smallSpacing,
                         )
-                        .align(Alignment.CenterHorizontally),
+                        .align(Alignment.CenterHorizontally)
+                        .testTag("nip_login_error")
+                        .layoutId("nip_login_error"),
                 ) {
                     Text(
                         text = when (nipResult) {
@@ -558,6 +562,13 @@ internal fun LoginContent(
                         BaubapComposeTheme.orientation.defaultCornerRadius,
                     ),
                     enabled = !loading,
+                    modifier = Modifier
+                        .padding(
+                            bottom = BaubapComposeTheme
+                                .orientation
+                                .defaultVerticalPadding
+                                .times(2),
+                        ),
                 ) {
                     Text(
                         text = stringResource(R.string.do_not_have_account),
@@ -565,7 +576,6 @@ internal fun LoginContent(
                         fontFamily = Comfortaa,
                         fontWeight = FontWeight.Normal,
                         style = TextStyle(textDecoration = TextDecoration.Underline),
-
                     )
                 }
             }
