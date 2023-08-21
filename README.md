@@ -1,4 +1,4 @@
-# LoginTest
+# Baubap login test
 A example of multimodule login application, it uses a fake API login, so randomized responses are expected, including success response.
 
 
