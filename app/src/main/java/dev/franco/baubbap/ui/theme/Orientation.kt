@@ -1,6 +1,5 @@
 package dev.franco.baubbap.ui.theme
 
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -16,6 +15,7 @@ internal val BIG_CORNER_RADIUS = 32.dp
 internal val DEFAULT_ELEVATION = 8.dp
 internal val DEFAULT_SPACING = 24.dp
 internal val SMALL_SPACING = 8.dp
+internal val ICON_SIZE = 24.dp
 internal const val DEFAULT_MAX_LENGTH_INPUT_PASSWORD = 30
 
 val VerticalOrientation = Orientation()
@@ -36,17 +36,9 @@ data class Orientation(
     val defaultElevation: Dp = DEFAULT_ELEVATION,
     val defaultVerticalSpacing: Dp = DEFAULT_SPACING,
     val smallSpacing: Dp = SMALL_SPACING,
+    val iconSize: Dp = ICON_SIZE,
 )
 
 val LocalOrientationDimens = staticCompositionLocalOf {
     Orientation()
-}
-
-/**
- * Object to expose dynamically dimens.
- */
-object BaubapComposeTheme {
-    val orientation: Orientation
-        @Composable
-        get() = LocalOrientationDimens.current
 }

@@ -41,8 +41,11 @@ fun BaubapComposeTheme(
         VerticalOrientation
     }
 
+    val typographySize = TypographySize()
+
     CompositionLocalProvider(
         LocalOrientationDimens provides orientationDimens,
+        LocalTypographySize provides typographySize,
     ) {
         MaterialTheme(
             colors = colors,
@@ -51,4 +54,17 @@ fun BaubapComposeTheme(
             content = content,
         )
     }
+}
+
+/**
+ * Object to expose dynamically dimens.
+ */
+object BaubapComposeTheme {
+    val typographySize: TypographySize
+        @Composable
+        get() = LocalTypographySize.current
+
+    val orientation: Orientation
+        @Composable
+        get() = LocalOrientationDimens.current
 }

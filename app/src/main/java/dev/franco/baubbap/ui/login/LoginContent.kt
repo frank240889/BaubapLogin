@@ -63,8 +63,6 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import dev.franco.baubap.R
 import dev.franco.baubbap.ui.components.VerticalDivider
 import dev.franco.baubbap.ui.theme.Background
@@ -163,7 +161,7 @@ internal fun LoginContent(
                 fontFamily = Comfortaa,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
-                fontSize = 20.sp,
+                fontSize = BaubapComposeTheme.typographySize.medium,
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .padding(
@@ -203,7 +201,7 @@ internal fun LoginContent(
                     fontFamily = Comfortaa,
                     fontWeight = FontWeight.SemiBold,
                     color = Color.DarkGray,
-                    fontSize = 20.sp,
+                    fontSize = BaubapComposeTheme.typographySize.medium,
                 )
 
                 Spacer(
@@ -215,7 +213,7 @@ internal fun LoginContent(
                     textStyle = TextStyle(
                         fontFamily = Montserrat,
                         fontWeight = FontWeight.Normal,
-                        fontSize = 18.sp,
+                        fontSize = BaubapComposeTheme.typographySize.small,
                     ),
                     value = user.toString(),
                     onValueChange = {
@@ -356,7 +354,7 @@ internal fun LoginContent(
                     textStyle = TextStyle(
                         fontFamily = Montserrat,
                         fontWeight = FontWeight.Normal,
-                        fontSize = 18.sp,
+                        fontSize = BaubapComposeTheme.typographySize.small,
                     ),
                     value = password.toString(),
                     onValueChange = {
@@ -499,7 +497,7 @@ internal fun LoginContent(
                         CircularProgressIndicator(
                             color = Baubap,
                             modifier = Modifier
-                                .size(24.dp),
+                                .size(BaubapComposeTheme.orientation.iconSize),
                         )
                     } else {
                         Icon(
@@ -520,7 +518,7 @@ internal fun LoginContent(
                             text = stringResource(
                                 R.string.login,
                             ).uppercase(),
-                            fontSize = 18.sp,
+                            fontSize = BaubapComposeTheme.typographySize.small,
                             fontFamily = Comfortaa,
                             fontWeight = FontWeight.Bold,
                             color = Color.DarkGray,

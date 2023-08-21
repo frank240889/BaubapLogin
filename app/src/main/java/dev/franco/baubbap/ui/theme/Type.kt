@@ -1,10 +1,12 @@
 package dev.franco.baubbap.ui.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import dev.franco.baubap.R
 
@@ -34,3 +36,12 @@ val Comfortaa = FontFamily(
         Font(R.font.comfortaa_light, FontWeight.Light),
     ),
 )
+
+data class TypographySize(
+    val small: TextUnit = 18.sp,
+    val medium: TextUnit = 20.sp,
+)
+
+val LocalTypographySize = staticCompositionLocalOf {
+    TypographySize()
+}
