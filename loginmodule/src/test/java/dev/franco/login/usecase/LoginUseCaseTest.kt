@@ -74,7 +74,7 @@ class LoginUseCaseTest {
 
         loginUseCase
             .login(user, password)
-            .test {.
+            .test {
                 assert(awaitItem() is LoginResult.OnError)
                 awaitComplete()
             }
